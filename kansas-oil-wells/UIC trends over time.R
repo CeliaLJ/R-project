@@ -41,3 +41,31 @@ View(fluid_and_wells_per_year)
 
 # step 5 : create a chart that shows rows for every county, and the amount injected per year in each??
 # and then create a chart that shows the number of wells per county per year??
+
+
+
+# View(sample(CompleteUIC))
+
+# This column is county ¯\_(ツ)_/¯
+# CompleteUIC$TOTAL_GAS_YEAR
+
+# Get a row for each county and number of unique wells in the county
+county_stats <- CompleteUIC %>%
+  group_by(TOTAL_GAS_YEAR) %>%
+  summarise(
+    well_count = n_distinct(KGS_ID), 
+    fluid_injected = sum(FLUID_INJECTED)
+  )
+View(county_stats)
+
+# Now break down by year (the real year)
+county_stats_with_year <- CompleteUIC %>%
+  group_by(TOTAL_GAS_YEAR, YEAR) %>%
+  summarise(fluid_injected = sum(FLUID_INJECTED))
+View(county_stats_with_year)
+
+# Instead of one row per county per year, let's make it one row per county. The columns are years
+# and the number is the total injected
+library(tidyr)
+counties_with_years_together <- spread(county_stats_with_year, YEAR, fluid_injected)
+View(counties_with_years_together)
