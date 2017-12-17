@@ -1,3 +1,4 @@
+# Hi Dan, I'm adding this comment so I'll have an excuse to do a commit. Also, I love your smile.
 # TRENDS OVER TIME: ANALYZING THE UIC LIST
 
 # step 1 : read in the complete UIC list available on the KCC website.
@@ -46,7 +47,7 @@ View(fluid_and_wells_per_year)
 
 # View(sample(CompleteUIC))
 
-# This column is county ¯\_(ツ)_/¯
+# This column is county ??\_(???)_/??
 # CompleteUIC$TOTAL_GAS_YEAR
 
 # Get a row for each county and number of unique wells in the county
